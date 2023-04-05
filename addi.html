@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Addition</h1>
+
+
+<button onclick="myFunction()">Add</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  let person = prompt("Please enter your name", "kaib");
+  if (person != null) {
+    document.getElementById("demo").innerHTML =
+    "Addition is " + eval(person);
+  }
+}
+</script>
+
+</body>
+</html>

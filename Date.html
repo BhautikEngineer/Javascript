@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Dates</h1>
+<h2>The getDate() Method</h2>
+
+<p>getDate() returns the day of the month (from 1 to 31) of a date:</p>
+
+<p id="demo"></p>
+
+<script>
+const d = new Date();
+let day = d.getDate();
+document.getElementById("demo").innerHTML = day;
+</script>
+<!-- <script>
+    const d = new Date("February 14, 2023 01:15:00");
+    let day = d.getDay()
+    
+    document.getElementById("demo").innerHTML = day;
+    </script> -->
+</body>
+</html>
