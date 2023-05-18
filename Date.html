@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>JavaScript Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        #demo {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
 <body>
+    <h1>JavaScript Dates</h1>
+    <h2>The getDate() Method</h2>
 
-<h1>JavaScript Dates</h1>
-<h2>The getDate() Method</h2>
+    <p>getDate() returns the day of the month (from 1 to 31) of a date:</p>
 
-<p>getDate() returns the day of the month (from 1 to 31) of a date:</p>
+    <p id="demo"></p>
 
-<p id="demo"></p>
-
-<script>
-const d = new Date();
-let day = d.getDate();
-document.getElementById("demo").innerHTML = day;
-</script>
-<!-- <script>
-    const d = new Date("February 14, 2023 01:15:00");
-    let day = d.getDay()
-    
-    document.getElementById("demo").innerHTML = day;
-    </script> -->
+    <script>
+        const d = new Date();
+        const day = d.getDate();
+        document.getElementById("demo").innerHTML = day;
+    </script>
 </body>
 </html>
