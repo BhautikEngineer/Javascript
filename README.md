@@ -48,6 +48,8 @@ Best practices for error handling
 
 ### Browser APIs and Web APIs
 
+jsonplaceholder website is good for axios API. Now, make table and add search functionality. After that add dropdown for column names and search in that specific column only. remove filter and add master search.
+
 Exploring browser-specific APIs (e.g., localStorage, Geolocation, Canvas)
 Working with web APIs for integrating external services (e.g., Google Maps , Twitter)
 
