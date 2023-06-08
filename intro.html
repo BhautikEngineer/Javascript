@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stylish JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    .message {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    #demo {
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h2>Stylish JavaScript in Body</h2>
+
+  <div class="message">
+    <p id="demo">My First JavaScript</p>
+  </div>
+
+  <script>
+    document.getElementById("demo").innerHTML = "My First JavaScript";
+  </script>
+</body>
+</html>

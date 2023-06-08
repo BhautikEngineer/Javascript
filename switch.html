@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+    
+    #dayOutput {
+      color: #333;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>JavaScript Switch</h2>
+    <p id="dayOutput"></p>
+  </div>
+
+  <script>
+    let day;
+    switch (new Date().getDay()) {
+      case 0:
+        day = "Sunday";
+        break;
+      case 1:
+        day = "Monday";
+        break;
+      case 2:
+        day = "Tuesday";
+        break;
+      case 3:
+        day = "Wednesday";
+        break;
+      case 4:
+        day = "Thursday";
+        break;
+      case 5:
+        day = "Friday";
+        break;
+      case 6:
+        day = "Saturday";
+        break;
+    }
+    
+    document.getElementById("dayOutput").textContent = "Today is " + day;
+  </script>
+</body>
+</html>

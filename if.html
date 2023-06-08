@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript if Statement</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    .message {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>JavaScript if Statement</h2>
+
+  <div class="message">
+    <p>Display "Good day!" if the hour is less than 18:00:</p>
+    <p id="demo">Good Evening!</p>
+  </div>
+
+  <script>
+    x = new Date().getHours();
+    if (x < 18) {
+      document.getElementById("demo").innerHTML = "Good day!";
+    }
+  </script>
+</body>
+</html>

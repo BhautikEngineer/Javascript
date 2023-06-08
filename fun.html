@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo JavaScript in Head</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            background-color: #4286f4;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function myFunction() {
+            document.getElementById("demo").innerHTML = "Kem chho walu function";
+        }
+
+        function Fun1() {
+            document.getElementById("demo").innerHTML = "2nd function";
+        }
+    </script>
+</head>
+<body>
+
+<h2>Demo JavaScript in Head</h2>
+
+<p id="demo">A Paragraph.</p>
+
+<button type="button" onclick="myFunction()">Try it</button>
+<button type="button" onclick="Fun1()">click</button>
+
+</body>
+</html>

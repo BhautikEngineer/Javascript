@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Input Methods</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    .message {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h2>User Input Methods</h2>
+
+  <div class="message">
+    <h3>Using prompt():</h3>
+    <button onclick="getUserInputPrompt()">Get Input</button>
+    <p id="demoPrompt"></p>
+  </div>
+
+  <div class="message">
+    <h3>Using HTML form input:</h3>
+    <form>
+      <input type="text" id="inputForm" placeholder="Enter your name">
+      <button type="button" onclick="getUserInputForm()">Submit</button>
+    </form>
+    <p id="demoForm"></p>
+  </div>
+
+  <div class="message">
+    <h3>Using event listener:</h3>
+    <input type="text" id="inputEvent" placeholder="Enter your name">
+    <p id="demoEvent"></p>
+  </div>
+
+  <script>
+    function getUserInputPrompt() {
+      let person = prompt("Please enter your name:", "John Doe");
+      if (person != null) {
+        document.getElementById("demoPrompt").innerHTML = "Hello " + person + "! How are you today?";
+      }
+    }
+
+    function getUserInputForm() {
+      let person = document.getElementById("inputForm").value;
+      document.getElementById("demoForm").innerHTML = "Hello " + person + "! How are you today?";
+    }
+
+
+    document.getElementById("inputEvent").addEventListener("input", registerEventListener);
+
+    function registerEventListener() {
+    let inputElement = document.getElementById("inputEvent");
+    inputElement.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        let person = inputElement.value;
+        document.getElementById("demoEvent").innerHTML = "Hello " + person + "! How are you today?";
+      }
+    });
+  }
+  </script>
+</body>
+</html>

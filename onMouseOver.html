@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        .hover-element {
+            color: #fff;
+            background-color: #4a90e2;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Heading Two</h2>
+    <div class="hover-element" onmouseover="changeBackgroundColor('darkblue')" onmouseout="changeBackgroundColor('#f1f1f1')">Hover over me to change the background color.</div>
+
+    <script>
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+</body>
+</html>

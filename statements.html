@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Statements</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    p {
+      color: #666;
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    #output-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .result {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>JavaScript Statements</h2>
+
+<p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed by a computer.</p>
+
+<div id="output-container">
+  <p class="result" id="demo"></p>
+  <p class="result" id="subtraction"></p>
+  <p class="result" id="multiplication"></p>
+  <p class="result" id="division"></p>
+</div>
+
+<script>
+let x, y, z;  // Statement 1
+x = 5;        // Statement 2
+y = 6;        // Statement 3
+z = x + y;    // Statement 4
+
+document.getElementById("demo").innerHTML = "The value of z is " + z + ".";
+document.getElementById("subtraction").innerHTML = "Subtraction is " + (x-y) + ".";
+document.getElementById("multiplication").innerHTML = "Multiplication is " + (x*y) + ".";
+document.getElementById("division").innerHTML = "Division is " + (x/y) + ".";
+</script>
+
+</body>
+</html>

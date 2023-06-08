@@ -1,0 +1,25 @@
+<!-- GPT -->
+
+
+
+
+
+
+
+<script>
+  async function getFile(url) {
+    try {
+      const response = await fetch(url); // Make a request to the file URL
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} ${response.statusText}`);
+      }
+      const fileContent = await response.text(); // Read the file content
+      console.log(fileContent); // Handle the file content as needed
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  // Usage
+  getFile("Date.html"); // Replace 'file.txt' with the actual URL of the file you want to fetch
+</script>
