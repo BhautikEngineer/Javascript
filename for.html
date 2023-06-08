@@ -1,5 +1,27 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>JavaScript For Loop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 <body>
 
 <h2>JavaScript For Loop</h2>
@@ -7,14 +29,13 @@
 <p id="demo"></p>
 
 <script>
-let text = "";
+    let text = "";
 
-for (let i = 0; i < 5; i++) {
-  text += "The number is " + i + "<br>";
-}
+    for (let i = 0; i < 5; i++) {
+        text += "The number is " + i + "<br>";
+    }
 
-document.write(text)
-document.getElementById("demo").innerHTML = "Hello boi";
+    document.getElementById("demo").innerHTML = text;
 </script>
 
 </body>
