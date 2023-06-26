@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Axios Table Example with Search</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+  
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+
+    #search-input {
+      margin-bottom: 10px;
+    }
+  </style>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>User Table with Search</h2>
+  
+  <div>
+    <label for="search-input">Search:</label>
+    <input type="text" id="search-input" />
+    <label for="search-column">Search Column:</label>
+    <select id="search-column">
+      <option value="id">ID</option>
+      <option value="name">Name</option>
+      <option value="email">Email</option>
+      <option value="username">Username</option>
+    </select>
+  </div>
+
+  <table id="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody id="user-data"></tbody>
+  </table>
+
+  <script>
+    // Make an Axios request to fetch user data
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(function (response) {
+        // Get the data from the response
+        const users = response.data;
+
+        // Get the user data element
+        const userData = document.getElementById('user-data');
+
+        // Iterate over the users and create table rows
+        users.forEach(function (user) {
+          const row = document.createElement('tr');
+
+          const idCell = document.createElement('td');
+          idCell.textContent = user.id;
+          row.appendChild(idCell);
+
+          const nameCell = document.createElement('td');
+          nameCell.textContent = user.name;
+          row.appendChild(nameCell);
+
+          const emailCell = document.createElement('td');
+          emailCell.textContent = user.email;
+          row.appendChild(emailCell);
+
+          const usernameCell = document.createElement('td');
+          usernameCell.textContent = user.username;
+          row.appendChild(usernameCell);
+
+          userData.appendChild(row);
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        const searchColumn = document.getElementById('search-column');
+
+        searchInput.addEventListener('input', function () {
+          performSearch(searchInput.value.toLowerCase(), searchColumn.value);
+        });
+
+        function performSearch(searchValue, searchColumnName) {
+          const rows = userData.getElementsByTagName('tr');
+
+          for (let i = 0; i < rows.length; i++) {
+            const columnText = rows[i].querySelector(`td:nth-child(${getColumnIndex(searchColumnName)})`).textContent.toLowerCase();
+
+            if (columnText.includes(searchValue)) {
+              rows[i].style.display = '';
+            } else {
+              rows[i].style.display = 'none';
+            }
+          }
+        }
+
+        function getColumnIndex(columnName) {
+          const headers = document.querySelectorAll('#user-table th');
+
+          for (let i = 0; i < headers.length; i++) {
+            if (headers[i].textContent.toLowerCase() === columnName.toLowerCase()) {
+              return i + 1;
+            }
+          }
+
+          return -1;
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  </script>
+</body>
+</html>

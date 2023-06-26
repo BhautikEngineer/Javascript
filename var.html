@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .output-container {
+      background-color: #f8f8f8;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .output-container p {
+      margin: 0;
+    }
+    
+    .output-label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="output-container">
+    <p class="output-label">Input:</p>
+    <p>x = 10, y = 8</p>
+    <p class="output-label">Output:</p>
+    <p id="output1"></p>
+  </div>
+
+  <div class="output-container">
+    <p class="output-label">Input:</p>
+    <p>a = 3, b = 9</p>
+    <p class="output-label">Output:</p>
+    <p id="output2"></p>
+  </div>
+
+  <div class="output-container">
+    <p class="output-label">Input:</p>
+    <p>p = 7, q = 2</p>
+    <p class="output-label">Output:</p>
+    <p id="output3"></p>
+  </div>
+
+  <div class="output-container">
+    <p class="output-label">Input:</p>
+    <p>price1 = 4, price2 = 7</p>
+    <p class="output-label">Output:</p>
+    <p id="output4"></p>
+  </div>
+
+  <script>
+    function showOutput(outputId, inputValues, result) {
+      var outputElement = document.getElementById(outputId);
+      outputElement.innerHTML = "<span class='input-values'>" + inputValues + "</span> = " + result;
+    }
+
+    const x = 10;
+    const y = 8;
+    const z = x + y;
+    showOutput("output1", "x + y", z);
+
+    let a = 3;
+    let b = 9;
+    let c = a + b;
+    showOutput("output2", "a + b", c);
+
+    let p = 7, q = 2;
+    let r = p + q;
+    showOutput("output3", "p + q", r);
+
+    const price1 = 4;
+    const price2 = 7;
+    const total = price1 + price2;
+    showOutput("output4", "price1 + price2", total);
+  </script>
+</body>
+</html>

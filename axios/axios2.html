@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Axios Table Example</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+  
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>User Table</h2>
+  <table id="user-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody id="user-data"></tbody>
+  </table>
+
+  <script>
+    // Make an Axios request to fetch user data
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(function (response) {
+        // Get the data from the response
+        const users = response.data;
+
+        // Get the user data element
+        const userData = document.getElementById('user-data');
+
+        // Iterate over the users and create table rows
+        users.forEach(function (user) {
+          const row = document.createElement('tr');
+
+          const idCell = document.createElement('td');
+          idCell.textContent = user.id;
+          row.appendChild(idCell);
+
+          const nameCell = document.createElement('td');
+          nameCell.textContent = user.name;
+          row.appendChild(nameCell);
+
+          const emailCell = document.createElement('td');
+          emailCell.textContent = user.email;
+          row.appendChild(emailCell);
+
+          const usernameCell = document.createElement('td');
+          usernameCell.textContent = user.username;
+          row.appendChild(usernameCell);
+
+          userData.appendChild(row);
+        });
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  </script>
+</body>
+</html>

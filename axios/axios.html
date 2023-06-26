@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Axios in HTML</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>User List</h2>
+  <ul id="user-list"></ul>
+
+  <script>
+    // Make an Axios request to fetch user data
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(function (response) {
+        // Get the data from the response
+        const users = response.data;
+
+        // Get the user list element
+        const userList = document.getElementById('user-list');
+
+        // Iterate over the users and create list items
+        users.forEach(function (user) {
+          const listItem = document.createElement('li');
+          listItem.textContent = user.name;
+          userList.appendChild(listItem);
+        });
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  </script>
+</body>
+</html>

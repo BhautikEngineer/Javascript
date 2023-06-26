@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>COVID-19 Statistics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1,
+    h2 {
+      color: #333;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    select,
+    button {
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    .statistics-box-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .statistics-box {
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+
+    .statistics-box h3 {
+      margin: 0;
+      color: #333;
+    }
+
+    .statistics-box p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: #777;
+    }
+
+    button#get-data-btn {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    /* Additional styles for coloring the statistics boxes */
+    .statistics-box.active-cases {
+      background-color: #ffcc80;
+    }
+
+    .statistics-box.total-cases {
+      background-color: #ef9a9a;
+    }
+
+    .statistics-box.deaths {
+      background-color: #bdbdbd;
+    }
+
+    .statistics-box.recovered {
+      background-color: #a5d6a7;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>COVID-19 Statistics</h1>
+
+    <label for="country-select">Select a Country:</label>
+    <select id="country-select"></select>
+
+    <label for="date-select">Select a Date:</label>
+    <select id="date-select"></select>
+
+    <button type="button" id="get-data-btn">Get Data</button>
+
+    <h2>Statistics for <span id="selected-country"></span>:</h2>
+
+    <div class="statistics-box-container">
+      <div class="statistics-box active-cases">
+        <h3>Active Cases</h3>
+        <p id="active-cases"></p>
+      </div>
+
+      <div class="statistics-box total-cases">
+        <h3>Total Cases</h3>
+        <p id="total-cases"></p>
+      </div>
+
+      <div class="statistics-box deaths">
+        <h3>Deaths</h3>
+        <p id="deaths"></p>
+      </div>
+
+      <div class="statistics-box recovered">
+        <h3>Recovered</h3>
+        <p id="recovered"></p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      // Make a GET request to fetch the list of countries
+      axios.get('https://covid-193.p.rapidapi.com/countries', {
+        headers: {
+          'X-RapidAPI-Key': 'd8dc0c4e46msh5e9b4fe566d448ep1f0a66jsn2487f1d2e93b',
+          'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+        }
+      })
+        .then(function (response) {
+          const countries = response.data.response;
+
+          // Get the country select element
+          const countrySelect = document.getElementById('country-select');
+
+          // Create an option for each country and add it to the select element
+          countries.forEach(function (country) {
+            const option = document.createElement('option');
+            option.value = country;
+            option.textContent = country;
+            countrySelect.appendChild(option);
+          });
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+
+      // Fetch available dates for the selected country
+      function fetchDates() {
+        const selectedCountry = document.getElementById('country-select').value;
+
+        // Make a GET request to fetch the history for the selected country
+        axios.get(`https://covid-193.p.rapidapi.com/history?country=${selectedCountry}`, {
+          headers: {
+            'X-RapidAPI-Key': 'd8dc0c4e46msh5e9b4fe566d448ep1f0a66jsn2487f1d2e93b',
+            'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+          }
+        })
+          .then(function (response) {
+            const history = response.data.response;
+
+            // Get the date select element
+            const dateSelect = document.getElementById('date-select');
+
+            // Clear the date select
+            dateSelect.innerHTML = '';
+
+            // Create an option for each date and add it to the select element
+            history.forEach(function (stat) {
+              const option = document.createElement('option');
+              option.value = stat.day;
+              option.textContent = stat.day;
+              dateSelect.appendChild(option);
+            });
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+      }
+
+      // Add event listener to the country select element
+      const countrySelect = document.getElementById('country-select');
+      countrySelect.addEventListener('change', fetchDates);
+
+      // Fetch statistics for the selected country and date
+      function fetchStatistics() {
+        const selectedCountry = document.getElementById('country-select').value;
+        const selectedDate = document.getElementById('date-select').value;
+
+        // Make a GET request to fetch the statistics for the selected country and date
+        axios.get(`https://covid-193.p.rapidapi.com/history?country=${selectedCountry}&day=${selectedDate}`, {
+          headers: {
+            'X-RapidAPI-Key': 'd8dc0c4e46msh5e9b4fe566d448ep1f0a66jsn2487f1d2e93b',
+            'X-RapidAPI-Host': 'covid-193.p.rapidapi.com'
+          }
+        })
+          .then(function (response) {
+            console.log(response)
+            const statistics = response.data.response[0];
+
+            // Update the selected country name
+            const selectedCountryElement = document.getElementById('selected-country');
+            selectedCountryElement.textContent = selectedCountry;
+
+            // Update the statistics in the boxes
+            const activeCasesElement = document.getElementById('active-cases');
+            const totalCasesElement = document.getElementById('total-cases');
+            const deathsElement = document.getElementById('deaths');
+            const recoveredElement = document.getElementById('recovered');
+
+            activeCasesElement.textContent = statistics.cases.active;
+            totalCasesElement.textContent = statistics.cases.total;
+            deathsElement.textContent = statistics.deaths.total;
+            recoveredElement.textContent = statistics.cases.recovered;
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+      }
+
+      // Add event listener to the "Get Data" button
+      const getDataBtn = document.getElementById('get-data-btn');
+      getDataBtn.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent form submission
+        fetchStatistics();
+      });
+    </script>
+</body>
+
+</html>
