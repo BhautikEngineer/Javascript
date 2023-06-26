@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #myElement {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div id="myElement"></div>
+
+  <script>
+    $(document).ready(function() {
+      // Select the element to animate
+      var element = $("#myElement");
+
+      // Animate the element's width and height
+      element.animate({ 
+        width: "200px",
+        height: "200px"
+      }, 1000); // Animation duration in milliseconds (1 second)
+    });
+  </script>
+</body>
+</html>
