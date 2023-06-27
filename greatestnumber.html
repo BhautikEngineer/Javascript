@@ -1,0 +1,22 @@
+function findGreatestNumber(num1, num2, num3) {
+    let greatestNumber = num1; // Assume the first number is the greatest initially
+  
+    if (num2 > greatestNumber) {
+      greatestNumber = num2; // Update the greatestNumber if the second number is greater
+    }
+  
+    if (num3 > greatestNumber) {
+      greatestNumber = num3; // Update the greatestNumber if the third number is greater
+    }
+  
+    return greatestNumber;
+  }
+  
+  // Example usage
+  const number1 = 10;
+  const number2 = 25;
+  const number3 = 15;
+  
+  const greatest = findGreatestNumber(number1, number2, number3);
+  console.log("The greatest number is:", greatest);
+  
