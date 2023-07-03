@@ -8,6 +8,10 @@ JavaScript syntax and structure
 Working with variables, data types, and operators
 Control structures (if statements, loops)
 
+Write a function that takes a string as input and capitalizes the first letter of each word.
+
+
+
 ### DOM Manipulation
 
 Understanding the Document Object Model (DOM)
