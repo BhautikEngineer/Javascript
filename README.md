@@ -1,4 +1,12 @@
 # Javascript
+Tasks of JS:
+1. Make counter with + and - button
+2. add to cart functionality
+3. Make a table using axios
+   add search functionality by column name
+   Master search
+   Covid data dashboard
+
 Below is a suggested JavaScript syllabus for web design:
 
 ### Introduction to JavaScript
